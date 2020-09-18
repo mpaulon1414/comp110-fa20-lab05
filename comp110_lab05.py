@@ -14,9 +14,15 @@ def max_wind_speed(hurricane_filename):
     Returns:
     (type: int) The maximum wind speed of the hurricane.
     """
+    f = open(hurricane_filename, 'r')
+    biggest = 0                    #assigns biggest to the integer 0
+    for line in f:
+        vals = line.split(',')     #splits list based on comma
+        if int(vals[-2]) > biggest:   
+            biggest = int(vals[-2])
+    return (biggest)
 
-    pass # replace this line with your implementation of this function
-
+    
 
 def contains_word(word, review):
     """
@@ -33,12 +39,44 @@ def contains_word(word, review):
     (type: boolean) True if word is contained in the review, and false
     otherwise.
     """
+    word_lower = word.lower()
+    review_lower = review.lower()
 
-    pass # replace this line with your implementation of this function
+    review_list = review_lower.split()
+    if word_lower in review_list:
+        return True
+    else:
+        return False
+
+
+   
+
+
+
+pass # replace this line with your implementation of this function
 
 
 def test_max_wind_speed():
     """ Function that tests the max_wind_speed function. """
+    irma = max_wind_speed("irma.csv")    #assigns irma to max_wind_speed function with the irma file
+    if irma == 185:
+        print("max_wind_speed(irma.csv) PASSED")
+    else:
+        print("max_wind_speed(irma.csv) FAILED")
+
+    florence = max_wind_speed("florence.csv")     #assigns florence to max_wind_speed function with the florence file
+    if florence == 140:
+        print("max_wind_speed(florence.csv) PASSED")
+    else:
+        print("max_wind_speed(florence.csv) FAILED")
+
+    dorian = max_wind_speed("dorian.csv")           #assigns dorian to max_wind_speed funtion with the dorian file
+    if dorian == 185:
+        print("max_wind_speed(dorian.csv) PASSED")
+    else:
+        print("max_wind_speed(dorian.csv) FAILED")
+
+    
 
     print("Starting test of max_wind_speed")
 
@@ -65,6 +103,8 @@ def test_contains_word():
         print("FAILED: contains_word('ok', 'bad')")
     elif contains_word('ok', 'not ok') != True:
         print("FAILED: contains_word('ok', 'not ok')")
+
+    elif contains_word()
     # To Do: update the chained conditional to test all of your new test cases.
     else:
         print("All contains_word test cases passed!")

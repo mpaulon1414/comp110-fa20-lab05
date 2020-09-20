@@ -104,7 +104,7 @@ def test_contains_word():
     elif contains_word('ok', 'not ok') != True:
         print("FAILED: contains_word('ok', 'not ok')")
 
-    elif contains_word()
+    elif contains_word():
     # To Do: update the chained conditional to test all of your new test cases.
     else:
         print("All contains_word test cases passed!")
